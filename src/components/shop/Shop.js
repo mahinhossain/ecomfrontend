@@ -62,7 +62,7 @@ export default function Shop() {
   };
   return (
     <div className="container-fluid">
-      <h2 className="text-center">Happy ShoppingC</h2>
+      <h2 className="text-center text-warning">Happy Shopping</h2>
 
       {/* <OwlCarousel
         autoplayTimeout={1000}
