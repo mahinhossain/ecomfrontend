@@ -5,7 +5,7 @@ import Shop from "./components/shop/Shop";
 import Cart from "./components/cart/Cart";
 import CheckOut from "./components/CheckOut";
 import NotFound from "./components/CheckOut";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Test from "./Test";
