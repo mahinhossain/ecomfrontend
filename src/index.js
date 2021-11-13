@@ -9,7 +9,6 @@
 //   </React.StrictMode>,
 //   document.getElementById("root")
 // );
-import swDev from "./swDev";
 import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
