@@ -7,10 +7,13 @@ import swal from "sweetalert";
 const baseUrl = "https://protected-badlands-43308.herokuapp.com";
 export const getProducts = () => async (dispatch) => {
   let products = [];
+  let loading = true;
   await axios
     .get(`${baseUrl}/api/products`)
     .then((res) => {
       products = res.data;
+      loading = false;
+      dispatch({ type: Types.GET_LOADING, payload: loading });
     })
     .catch((err) => console.log("err :>> ", err));
   dispatch({ type: Types.GET_PRODUCTS, payload: products });

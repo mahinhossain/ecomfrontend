@@ -28,6 +28,7 @@ export default function Shop() {
   }, [cart, loged]);
 
   const searchText = useSelector((state) => state.Reducer.searchText);
+  const loading = useSelector((state) => state.Reducer.loading);
 
   const addedToCart = (item) => {
     // console.log("item :>> ", item);
@@ -46,104 +47,66 @@ export default function Shop() {
     // setCart(newCart);
   };
 
-  const options = {
-    items: 1,
-    nav: true,
-    navText: [
-      "<div className='nav-btn prev-slide'></div>",
-      "<div className='nav-btn next-slide'></div>",
-    ],
-    rewind: true,
-    autoplay: true,
-    slideBy: 1,
-    dots: true,
-    dotsEach: true,
-    dotData: true,
-  };
   return (
     <div className="container-fluid">
-      <h2 className="text-center text-warning">Happy Shopping</h2>
-
-      {/* <OwlCarousel
-        autoplayTimeout={1000}
-        autoplay={true}
-        items={4}
-        className="owl-theme"
-        margin={8}
-        className="mb-5"
-        // options={options}
-      >
-        {state.map((item) => (
-          <div className="bg-light  shadow-lg card-header ">
-            {" "}
-            <p className="text-center text-truncate">{item.name}</p>
-            <img
-              className="card-img-top img-fluid p-4 w-75"
-              src={item.img}
-              alt="name"
-            />
+      {loading ? (
+        <div className="d-flex justify-content-center text-center  fa-3x align-items-center">
+          <div class="text-danger  spinner-border " role="status">
+            <span class="sr-only">Loading...</span>
           </div>
-        ))}
-      </OwlCarousel> 
-
-      <Carousel autoPlay interval={1000}>
-        {state.map((item) => (
-          <div className=" shadow-lg">
-            <img src={item.img} className="w-25" />
-            {/* <p className="legend"></p> */}
-      {/* <h4 className="bg-white text-danger mt-5 card-footer">
-              {item.name}
-            </h4>
-          </div>
-        ))}
-      </Carousel> */}
-
-      <div className="row">
-        {products
-          .filter((fitem) =>
-            fitem.name.toLowerCase().includes(searchText.toLowerCase())
-          )
-          .map((item) => (
-            <div className="col-md-3  mb-2" key={item._id}>
-              {" "}
-              {/* <Link to={"/productDetails/" + item.id}> */}
-              <div class="card  w-75  shadow-2xl ">
-                <Link to={"/productDetails/" + item._id}>
+        </div>
+      ) : (
+        <div>
+          {" "}
+          <h2 className="text-center text-warning">Happy Shopping</h2>
+          <div className="row">
+            {products
+              .filter((fitem) =>
+                fitem.name.toLowerCase().includes(searchText.toLowerCase())
+              )
+              .map((item) => (
+                <div className="col-md-3  mb-2" key={item._id}>
                   {" "}
-                  <img
-                    className="card-img-top img-fluid p-3 "
-                    src={item.img}
-                    alt="name"
-                  />
-                </Link>
+                  {/* <Link to={"/productDetails/" + item.id}> */}
+                  <div class="card  w-75  shadow-2xl ">
+                    <Link to={"/productDetails/" + item._id}>
+                      {" "}
+                      <img
+                        className="card-img-top img-fluid p-3 "
+                        src={item.img}
+                        alt="name"
+                      />
+                    </Link>
 
-                <div class="card-body">
-                  <p className="text-truncate">{item.name}</p>
-                  <div className="row  ">
-                    {" "}
-                    <p className="btn-success badge-success badge">
-                      Seller:{item.brand}
-                    </p>
-                    <p className="btn-primary badge-warning badge">
-                      Price:{item.price}
-                    </p>
-                    {item.inStock == 0 ? (
-                      <p className="btn-danger badge-warning badge   ">
-                        Out of Stock
-                      </p>
-                    ) : (
-                      <p className="  badge-warning badge text-dark">
-                        In Stock:{item.inStock}
-                      </p>
-                    )}
+                    <div class="card-body">
+                      <p className="text-truncate">{item.name}</p>
+                      <div className="row  ">
+                        {" "}
+                        <p className="btn-success badge-success badge">
+                          Seller:{item.brand}
+                        </p>
+                        <p className="btn-primary badge-warning badge">
+                          Price:{item.price}
+                        </p>
+                        {item.inStock == 0 ? (
+                          <p className="btn-danger badge-warning badge   ">
+                            Out of Stock
+                          </p>
+                        ) : (
+                          <p className="  badge-warning badge text-dark">
+                            In Stock:{item.inStock}
+                          </p>
+                        )}
+                      </div>
+                    </div>
                   </div>
+                  {/* </Link> */}
                 </div>
-              </div>
-              {/* </Link> */}
-            </div>
-          ))}
-      </div>
-      <div className="row"></div>
+              ))}
+          </div>
+          <div className="row"></div>
+        </div>
+      )}
     </div>
   );
 }

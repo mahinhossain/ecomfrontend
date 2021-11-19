@@ -20,6 +20,7 @@ const initializitState = {
   searchText: "",
   userRegInfo: "",
   profile: "",
+  loading: true,
 };
 
 function CounterReducer(state = initializitState, action) {
@@ -106,6 +107,12 @@ function CounterReducer(state = initializitState, action) {
       return {
         ...state,
         logout: action.payload,
+      };
+      break;
+    case Types.GET_LOADING:
+      return {
+        ...state,
+        loading: action.payload,
       };
       break;
     case Types.SEARCH_TEXT:

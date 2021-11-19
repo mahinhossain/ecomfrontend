@@ -21,9 +21,6 @@ export default function Cart() {
   }, [dispatch, cartItem]);
   const handleRemoveCrat = (index) => {
     dispatch(CartItemRemove(index));
-    // const cloneSt = [...cart];
-    // cloneSt.splice(index, 1);
-    // setcart(cloneSt);
   };
   // increase
   const handleDecrase = (item) => {
@@ -39,7 +36,7 @@ export default function Cart() {
 
     setcart(tempCart);
   };
-  console.log("cart :>> ", cart);
+
   // increrse
   const handleIncrase = (item) => {
     let tempCart = cart.map((aa) => {
@@ -48,7 +45,7 @@ export default function Cart() {
       }
       return aa;
     });
-    console.log("tempCart :>> ", tempCart);
+
     setcart(tempCart);
   };
 
@@ -71,7 +68,9 @@ export default function Cart() {
   // ]);
   const checkoutData = {
     cart,
-    loginInfo,
+    user,
+    totalItem,
+    totalprice,
   };
   const history = useHistory();
   const handleCheckOut = () => {

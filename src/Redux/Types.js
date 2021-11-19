@@ -9,3 +9,4 @@ export const ERROR = "ERROR";
 export const LOGOUT = "LOGOUT";
 export const USER_REGISTRATION = "USER_REGISTRATION";
 export const PROFILE = "PROFILE";
+export const GET_LOADING = "GET_LOADING";
