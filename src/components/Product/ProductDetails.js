@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./productscss.css";
 import StarRatings from "react-star-ratings";
 import { getProduct, CartItemAdded } from "../../Redux/Action";

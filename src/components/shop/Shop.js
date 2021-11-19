@@ -1,26 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { CartItemAdded, getProducts } from "../../Redux/Action";
+import { getProducts } from "../../Redux/Action";
 import { useEffect } from "react";
 import React from "react";
 import { useState } from "react";
-import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-import OwlCarousel from "react-owl-carousel";
-
-import "owl.carousel/dist/assets/owl.carousel.css";
-
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import ReactDOM from "react-dom";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
 export default function Shop() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.Reducer.products);
-  const [cart, setCart] = useState([]);
-  const [loged, setlogeduser] = useState(
-    JSON.parse(localStorage.getItem("userloged"))
-  );
+  const [cart] = useState([]);
+  const [loged] = useState(JSON.parse(localStorage.getItem("userloged")));
 
   useEffect(() => {
     dispatch(getProducts());
@@ -29,23 +18,6 @@ export default function Shop() {
 
   const searchText = useSelector((state) => state.Reducer.searchText);
   const loading = useSelector((state) => state.Reducer.loading);
-
-  const addedToCart = (item) => {
-    // console.log("item :>> ", item);
-    dispatch(CartItemAdded(item));
-    // Swal.fire("Already Added", "", "error");
-    // item.quantity = 1;
-
-    // const newCart = [...cart, item];
-    // const samePro = newCart.filter((same) => same._id == item._id);
-    // // console.log("samePro.length :>> ", samePro.length);
-
-    // if (samePro.length > 1) {
-    //   return false;
-    // }
-    // Swal.fire(" Added to Cart", "", "success");
-    // setCart(newCart);
-  };
 
   return (
     <div className="container-fluid">

@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../Redux/Action";
-import Swal from "sweetalert2";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Login() {
