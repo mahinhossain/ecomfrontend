@@ -21,6 +21,7 @@ const initializitState = {
   userRegInfo: "",
   profile: "",
   loading: true,
+  placeOrder: "",
 };
 
 function CounterReducer(state = initializitState, action) {
@@ -132,6 +133,12 @@ function CounterReducer(state = initializitState, action) {
       return {
         ...state,
         profile: action.payload,
+      };
+      break;
+    case Types.PLACE_ORDER:
+      return {
+        ...state,
+        placeOrder: action.payload,
       };
       break;
 

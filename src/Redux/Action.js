@@ -3,8 +3,8 @@ import * as Types from "./Types";
 import Swal from "sweetalert2";
 import swal from "sweetalert";
 
-// const baseUrl = "http://localhost:5000";
-const baseUrl = "https://protected-badlands-43308.herokuapp.com";
+const baseUrl = "http://localhost:5000";
+// const baseUrl = "https://protected-badlands-43308.herokuapp.com";
 export const getProducts = () => async (dispatch) => {
   let products = [];
   let loading = true;
@@ -93,7 +93,6 @@ export const userRegistration = (info) => async (dispatch) => {
 };
 
 export const cartToCheckout = (data) => async (dispatch) => {
-  console.log("data :>> ", data);
   dispatch({ type: Types.CART_FOR_CHECKOUT, payload: data });
 };
 export const searchText = (data) => async (dispatch) => {
@@ -106,4 +105,37 @@ export const logout = () => async (dispatch) => {
 };
 export const Profile = () => async (dispatch) => {
   dispatch({ type: Types.PROFILE, payload: "Logout Success" });
+};
+export const PlaceOrder = (info) => async (dispatch) => {
+  let { token } = JSON.parse(localStorage.getItem("userloged"));
+
+  console.log(`token`, token);
+
+  let data;
+  const con = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  await axios
+    .post(`${baseUrl}/api/orders`, info, con)
+    .then((res) => {
+      data = res.data;
+      console.log(`data order`, data);
+
+      Swal.fire({
+        position: " center",
+        icon: "success",
+        title: " Success",
+        showConfirmButton: false,
+        timer: 1100,
+      });
+    })
+    .catch((error) => {
+      dispatch({ type: Types.ERROR, payload: "Error" });
+    });
+  console.log("data :>> ", data);
+
+  dispatch({ type: Types.PLACE_ORDER, payload: data });
 };
