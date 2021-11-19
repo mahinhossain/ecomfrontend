@@ -3,8 +3,8 @@ import * as Types from "./Types";
 import Swal from "sweetalert2";
 import swal from "sweetalert";
 
-const baseUrl = "http://localhost:5000";
-// const baseUrl = "https://protected-badlands-43308.herokuapp.com";
+// const baseUrl = "http://localhost:5000";
+const baseUrl = "https://protected-badlands-43308.herokuapp.com";
 export const getProducts = () => async (dispatch) => {
   let products = [];
   let loading = true;
